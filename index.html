@@ -1,215 +1,157 @@
 <!DOCTYPE html>
-<html lang="en"><div id="in-page-channel-node-id" data-channel-name="in_page_channel_EpXbal"></div><input type="hidden" id="__yoroi_connector_api_injected_type" value="prod"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noindex, nofollow">
-    <title>When light fades, ideas rise</title>
-    <link rel="stylesheet" href="./files/css">    <link rel="stylesheet" href="./files/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="./files/common.css" type="text/css">
-<link rel="stylesheet" href="./files/style.css" type="text/css">
-<link rel="stylesheet" href="./files/font-awesome.min.css" type="text/css">
-  <style>@keyframes slide-in-one-tap {
-  from {
-    transform: translateY(80px);
-  }
-  to {
-    transform: translateY(0px);
-  }
-}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        :root {
+            --primary-color: #ffffff;
+            --accent-color: #feca57; /* Amarillo cálido */
+            --bg-dark: #1a1a1a;
+        }
 
-.trust-hide-gracefully {
-  opacity: 0;
-}
+        /* --- Configuración Base --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.trust-wallet-one-tap .hidden {
-    display: none;
-  }
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden; /* Vital para el parallax */
+            background-color: var(--bg-dark);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
 
-.trust-wallet-one-tap .semibold {
-    font-weight: 500;
-  }
+        /* --- FONDO PARALLAX --- */
+        .parallax-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
 
-.trust-wallet-one-tap .binance-plex {
-    font-family: 'Binance';
-  }
+        .parallax-bg {
+            position: absolute;
+            top: -5%;
+            left: -5%;
+            width: 110%; /* Margen extra para el movimiento */
+            height: 110%;
+            object-fit: cover;
+            background-size: cover;
+            background-position: center;
+            
+            /* --- TU IMAGEN DE FONDO --- */
+            background-image: url('background.png'); 
+            
+            filter: brightness(0.6); /* Oscurece un poco para resaltar el texto */
+            transition: transform 0.1s ease-out; /* Suavidad del movimiento */
+        }
 
-.trust-wallet-one-tap .rounded-full {
-    border-radius: 50%;
-  }
+        /* --- TEXTO PRINCIPAL --- */
+        .content-wrapper {
+            z-index: 10;
+            padding: 2rem;
+            width: 100%;
+        }
 
-.trust-wallet-one-tap .flex {
-    display: flex;
-  }
+        .slogan-container {
+            opacity: 0;
+            animation: fadeIn 2s ease-out 0.5s forwards; /* Entrada lenta y elegante */
+        }
 
-.trust-wallet-one-tap .flex-col {
-    flex-direction: column;
-  }
+        .big-slogan {
+            font-family: 'Merriweather', 'Georgia', serif; /* Tipografía elegante */
+            font-style: italic;
+            font-size: 2.5rem; 
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 0 2px 15px rgba(0,0,0,0.8);
+            position: relative;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
 
-.trust-wallet-one-tap .items-center {
-    align-items: center;
-  }
+        /* La línea decorativa debajo del texto */
+        .big-slogan::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 20px auto 0;
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--accent-color); 
+        }
 
-.trust-wallet-one-tap .space-between {
-    justify-content: space-between;
-  }
+        /* --- ANIMACIONES --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-.trust-wallet-one-tap .justify-center {
-    justify-content: center;
-  }
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .big-slogan { font-size: 1.8rem; }
+            .big-slogan::after { width: 40px; margin-top: 15px; }
+        }
+    </style>
+</head>
+<body>
 
-.trust-wallet-one-tap .w-full {
-    width: 100%;
-  }
-
-.trust-wallet-one-tap .box {
-    transition: all 0.5s cubic-bezier(0, 0, 0, 1.43);
-    animation: slide-in-one-tap 0.5s cubic-bezier(0, 0, 0, 1.43);
-    width: 384px;
-    border-radius: 15px;
-    background: #fff;
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
-    position: fixed;
-    right: 30px;
-    bottom: 30px;
-    z-index: 1020;
-  }
-
-.trust-wallet-one-tap .header {
-    gap: 15px;
-    border-bottom: 1px solid #e6e6e6;
-    padding: 10px 18px;
-  }
-
-.trust-wallet-one-tap .header .left-items {
-      gap: 15px;
-    }
-
-.trust-wallet-one-tap .header .title {
-      color: #1e2329;
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 28px;
-    }
-
-.trust-wallet-one-tap .header .subtitle {
-      color: #474d57;
-      font-size: 14px;
-      line-height: 20px;
-    }
-
-.trust-wallet-one-tap .header .close {
-      color: #1e2329;
-      cursor: pointer;
-    }
-
-.trust-wallet-one-tap .body {
-    padding: 9px 18px;
-    gap: 10px;
-  }
-
-.trust-wallet-one-tap .body .right-items {
-      gap: 10px;
-      width: 100%;
-    }
-
-.trust-wallet-one-tap .body .right-items .wallet-title {
-        color: #1e2329;
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 20px;
-      }
-
-.trust-wallet-one-tap .body .right-items .wallet-subtitle {
-        color: #474d57;
-        font-size: 14px;
-        line-height: 20px;
-      }
-
-.trust-wallet-one-tap .connect-indicator {
-    gap: 15px;
-    padding: 8px 0;
-  }
-
-.trust-wallet-one-tap .connect-indicator .flow-icon {
-      color: #474d57;
-    }
-
-.trust-wallet-one-tap .loading-color {
-    color: #fff;
-  }
-
-.trust-wallet-one-tap .button {
-    border-radius: 50px;
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-    background-color: rgb(5, 0, 255);
-    border-color: rgb(229, 231, 235);
-    cursor: pointer;
-    text-align: center;
-    height: 45px;
-  }
-
-.trust-wallet-one-tap .button .button-text {
-      color: #fff;
-      font-size: 16px;
-      font-weight: 600;
-      line-height: 20px;
-    }
-
-.trust-wallet-one-tap .footer {
-    margin: 20px 30px;
-  }
-
-.trust-wallet-one-tap .check-icon {
-    color: #fff;
-  }
-
-@font-face {
-  font-family: 'Binance';
-  src: url(chrome-extension://egjidjbpglichdcondbcbdnbeeppgdph/fonts/BinancePlex-Regular.otf) format('opentype');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Binance';
-  src: url(chrome-extension://egjidjbpglichdcondbcbdnbeeppgdph/fonts/BinancePlex-Medium.otf) format('opentype');
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Binance';
-  src: url(chrome-extension://egjidjbpglichdcondbcbdnbeeppgdph/fonts/BinancePlex-SemiBold.otf) format('opentype');
-  font-weight: 600;
-  font-style: normal;
-}
-
-</style></head>
-
-  <body>
-    <div id="hero-image">
-      <img src="./files/dark.jpg" alt="Mad Designer at work in the dark" title="Mad Designer at work in the dark">
+    <div class="parallax-container">
+        <div class="parallax-bg" id="bg-layer"></div>
     </div>
 
-    <div class="container">
-
-      <div class="row">
-        <div class="col-xs-12 col-md-12 col-lg-12">
-          <h1>When light fades, ideas rise</h1>
+    <div class="content-wrapper">
+        <div class="slogan-container">
+            <h1 class="big-slogan" id="dynamic-slogan"></h1>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-offset-2 col-lg-8">
-          <p class="content"></p>
-        </div>
-      </div>
-
     </div>
-    
-  <script defer="" src="./files/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;4f38a8c93ec44e05892b7ca292b73f2d&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
 
+    <script>
+        // 1. LISTA DE FRASES
+        const frases = [
+            "Illuminating the unseen",
+            "When light fades, ideas rise",
+            "The signal in the noise",
+            "Where logic meets magic",
+            "Crafting the future",
+            "In the shadows, we find the spark"
+        ];
 
-<protonpass-root-8bbd data-protonpass-role="root" data-protonpass-theme="os"><template shadowrootmode="closed"></template></protonpass-root-8bbd></body></html>
+        // 2. SELECCIÓN ALEATORIA Y ACTUALIZACIÓN
+        const sloganElement = document.getElementById('dynamic-slogan');
+        
+        // Elegir frase al azar
+        const indiceAleatorio = Math.floor(Math.random() * frases.length);
+        const fraseElegida = frases[indiceAleatorio];
+
+        // Poner la frase en la pantalla (H1)
+        sloganElement.textContent = fraseElegida;
+
+        // Poner la frase en el Título de la pestaña (Title)
+        // Quedará así: "Illuminating the unseen"
+        document.title = `${fraseElegida}`;
+
+        // 3. LÓGICA PARALLAX (Movimiento del ratón)
+        document.addEventListener('mousemove', (e) => {
+            const bg = document.getElementById('bg-layer');
+            const intensity = 45; 
+            const x = (window.innerWidth / 2 - e.clientX) / intensity;
+            const y = (window.innerHeight / 2 - e.clientY) / intensity;
+            bg.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+        });
+    </script>
+
+</body>
+</html>
