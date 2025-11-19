@@ -1,157 +1,170 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title> </title>
     <style>
-        :root {
-            --primary-color: #ffffff;
-            --accent-color: #feca57; /* Amarillo cálido */
-            --bg-dark: #1a1a1a;
+      :root {
+        --primary-color: #ffffff;
+        --accent-color: #feca57;
+        --bg-dark: #1a1a1a;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        /* Usamos 'dvh' (dynamic viewport height) para arreglar el problema de la barra del navegador en móviles */
+        height: 100dvh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        overflow: hidden;
+        background-color: var(--bg-dark);
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      }
+
+      /* --- FONDO PARALLAX --- */
+      .parallax-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+      }
+
+      .parallax-bg {
+        position: absolute;
+        /* Valores por defecto para PC (con margen para moverse) */
+        top: -5%;
+        left: -5%;
+        width: 110%;
+        height: 110%;
+        object-fit: cover;
+        background-size: cover;
+        background-position: center center;
+        /* TU IMAGEN */
+        background-image: url('background.png');
+        filter: brightness(0.6);
+        transition: transform 0.1s ease-out;
+        will-change: transform;
+        /* Optimización de rendimiento */
+      }
+
+      /* --- TEXTO PRINCIPAL --- */
+      .content-wrapper {
+        z-index: 10;
+        padding: 2rem;
+        width: 100%;
+        max-width: 90%;
+        /* Para que no toque los bordes en móvil */
+      }
+
+      .slogan-container {
+        opacity: 0;
+        animation: fadeIn 2s ease-out 0.5s forwards;
+      }
+
+      .big-slogan {
+        font-family: 'Merriweather', 'Georgia', serif;
+        font-style: italic;
+        font-size: 2.5rem;
+        color: rgba(255, 255, 255, 0.95);
+        text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
+        position: relative;
+        display: inline-block;
+        letter-spacing: 1px;
+        line-height: 1.3;
+        /* Mejor lectura en móvil si salta de línea */
+      }
+
+      .big-slogan::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: var(--accent-color);
+        margin: 20px auto 0;
+        border-radius: 2px;
+        box-shadow: 0 0 10px var(--accent-color);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
         }
 
-        /* --- Configuración Base --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
+      }
 
-        body {
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden; /* Vital para el parallax */
-            background-color: var(--bg-dark);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        }
+      /* --- MÓVIL (AJUSTES ESPECÍFICOS) --- */
+      @media (max-width: 768px) {
 
-        /* --- FONDO PARALLAX --- */
-        .parallax-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
+        /* 1. Quitamos el margen extra del parallax para que la imagen se vea mejor */
         .parallax-bg {
-            position: absolute;
-            top: -5%;
-            left: -5%;
-            width: 110%; /* Margen extra para el movimiento */
-            height: 110%;
-            object-fit: cover;
-            background-size: cover;
-            background-position: center;
-            
-            /* --- TU IMAGEN DE FONDO --- */
-            background-image: url('background.png'); 
-            
-            filter: brightness(0.6); /* Oscurece un poco para resaltar el texto */
-            transition: transform 0.1s ease-out; /* Suavidad del movimiento */
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          /* Si la parte importante de tu imagen está arriba, cambia 'center center' por 'center top' */
+          background-position: center center;
         }
 
-        /* --- TEXTO PRINCIPAL --- */
-        .content-wrapper {
-            z-index: 10;
-            padding: 2rem;
-            width: 100%;
-        }
-
-        .slogan-container {
-            opacity: 0;
-            animation: fadeIn 2s ease-out 0.5s forwards; /* Entrada lenta y elegante */
-        }
-
+        /* 2. Ajustamos el tamaño del texto */
         .big-slogan {
-            font-family: 'Merriweather', 'Georgia', serif; /* Tipografía elegante */
-            font-style: italic;
-            font-size: 2.5rem; 
-            color: rgba(255, 255, 255, 0.95);
-            text-shadow: 0 2px 15px rgba(0,0,0,0.8);
-            position: relative;
-            display: inline-block;
-            letter-spacing: 1px;
+          font-size: 1.8rem;
         }
 
-        /* La línea decorativa debajo del texto */
         .big-slogan::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: var(--accent-color);
-            margin: 20px auto 0;
-            border-radius: 2px;
-            box-shadow: 0 0 10px var(--accent-color); 
+          width: 40px;
+          margin-top: 15px;
         }
-
-        /* --- ANIMACIONES --- */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .big-slogan { font-size: 1.8rem; }
-            .big-slogan::after { width: 40px; margin-top: 15px; }
-        }
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="parallax-container">
-        <div class="parallax-bg" id="bg-layer"></div>
+      <div class="parallax-bg" id="bg-layer"></div>
     </div>
-
     <div class="content-wrapper">
-        <div class="slogan-container">
-            <h1 class="big-slogan" id="dynamic-slogan"></h1>
-        </div>
+      <div class="slogan-container">
+        <h1 class="big-slogan" id="dynamic-slogan"></h1>
+      </div>
     </div>
-
     <script>
-        // 1. LISTA DE FRASES
-        const frases = [
-            "Illuminating the unseen",
-            "When light fades, ideas rise",
-            "The signal in the noise",
-            "Where logic meets magic",
-            "Crafting the future",
-            "In the shadows, we find the spark"
-        ];
-
-        // 2. SELECCIÓN ALEATORIA Y ACTUALIZACIÓN
-        const sloganElement = document.getElementById('dynamic-slogan');
-        
-        // Elegir frase al azar
-        const indiceAleatorio = Math.floor(Math.random() * frases.length);
-        const fraseElegida = frases[indiceAleatorio];
-
-        // Poner la frase en la pantalla (H1)
-        sloganElement.textContent = fraseElegida;
-
-        // Poner la frase en el Título de la pestaña (Title)
-        // Quedará así: "Illuminating the unseen"
-        document.title = `${fraseElegida}`;
-
-        // 3. LÓGICA PARALLAX (Movimiento del ratón)
+      // 1. LISTA DE FRASES
+      const frases = ["Illuminating the unseen", "When light fades, ideas rise", "The signal in the noise", "Where logic meets magic", "Crafting the future", "In the shadows, we find the spark"];
+      // 2. SELECCIÓN ALEATORIA
+      const sloganElement = document.getElementById('dynamic-slogan');
+      const indiceAleatorio = Math.floor(Math.random() * frases.length);
+      const fraseElegida = frases[indiceAleatorio];
+      sloganElement.textContent = fraseElegida;
+      document.title = `${fraseElegida}`;
+      // 3. LÓGICA PARALLAX (Solo para PC/Escritorio)
+      // Detectamos si el dispositivo es táctil para no ejecutar el script innecesariamente
+      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      if (!isTouchDevice) {
         document.addEventListener('mousemove', (e) => {
-            const bg = document.getElementById('bg-layer');
-            const intensity = 45; 
-            const x = (window.innerWidth / 2 - e.clientX) / intensity;
-            const y = (window.innerHeight / 2 - e.clientY) / intensity;
-            bg.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+          const bg = document.getElementById('bg-layer');
+          const intensity = 45;
+          const x = (window.innerWidth / 2 - e.clientX) / intensity;
+          const y = (window.innerHeight / 2 - e.clientY) / intensity;
+          bg.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
         });
+      }
     </script>
-
-</body>
+  </body>
 </html>
